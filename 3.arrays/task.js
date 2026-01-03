@@ -6,10 +6,15 @@ function compareArrays(arr1, arr2) {
 }
 
 function getUsersNamesInAgeRange(users, gender) {
-  let filtered = users.filter(user => user.gender === gender);
+  /* let filtered = users.filter(user => user.gender === gender);
   if (filtered.length === 0) {
     return 0;
   }
   let result = filtered.map(user => user.age).reduce((sum, age) => sum + age);
   return result / filtered.length;
+  */
+  return users
+    .filter(user => user.gender === gender)
+    .map(user => user.age)
+    .reduce((sum, age, index, arr) => sum + age / arr.length, 0);
 }
